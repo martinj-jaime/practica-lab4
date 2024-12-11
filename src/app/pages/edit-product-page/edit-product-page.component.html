@@ -1,0 +1,30 @@
+<div *ngIf="!isFormLoaded">
+  <p>Cargando ...</p>
+</div>
+
+<div *ngIf="isFormLoaded">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name</label>
+    <div *ngIf="nameControl?.errors && nameControl?.touched">
+      <p *ngIf="nameControl?.errors?.['required']" class="error">
+        Campo requerido
+      </p>
+    </div>
+    <input id="name" type="text" formControlName="name" />
+    <label for="description">Description</label>
+    <div *ngIf="descriptionControl?.errors && descriptionControl?.touched">
+      <p *ngIf="descriptionControl?.errors?.['required']" class="error">
+        Campo requerido
+      </p>
+    </div>
+    <input id="description" type="text" formControlName="description" />
+    <label for="price">Price</label>
+    <input id="price" type="number" formControlName="price" />
+    <div *ngIf="priceControl?.errors && priceControl?.touched">
+      <p *ngIf="priceControl?.errors?.['required']" class="error">
+        Campo requerido
+      </p>
+    </div>
+    <button type="submit" [disabled]="productForm.invalid">Guardar</button>
+  </form>
+</div>

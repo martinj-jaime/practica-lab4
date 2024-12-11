@@ -1,0 +1,62 @@
+<div *ngIf="products.length === 0">
+  <p>Cargando ...</p>
+</div>
+
+<div *ngIf="productsTest.length > 0">
+  <table>
+    <thead>
+      <td>#</td>
+      <td>Nombre</td>
+      <td>Descripcion</td>
+      <td>Categoria</td>
+      <td>Precio</td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productsTest; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.categoryName }}</td>
+        <td>{{ product.price }}</td>
+        <td><button (click)="onEdit(product.productId)">Editar</button></td>
+        <!-- <td><button (click)="onDelete(product.productId)">Eliminar</button></td> -->
+        <td>
+          <app-delete-product
+            [productId]="product.productId"
+            (onDeleteEvent)="onDelete($event)"
+          ></app-delete-product>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="onAdd()">Agregar producto</button>
+</div>
+
+<!-- <div *ngIf="products.length > 0">
+  <table>
+    <thead>
+      <td>#</td>
+      <td>Nombre</td>
+      <td>Descripcion</td>
+      <td>Precio</td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td><button (click)="onEdit(product.productId)">Editar</button></td>
+        <td>
+          <app-delete-product
+            [productId]="product.productId"
+            (onDeleteEvent)="onDelete($event)"
+          ></app-delete-product>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="onAdd()">Agregar producto</button>
+</div> -->

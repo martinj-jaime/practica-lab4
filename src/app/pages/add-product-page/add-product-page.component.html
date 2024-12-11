@@ -1,0 +1,18 @@
+<p>add-product-page works!</p>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <label for="">Nombre</label>
+  <input type="text" formControlName="name" />
+  <label for="">Descripcion</label>
+  <input type="text" formControlName="description" />
+  <label for="">Precio</label>
+  <input type="text" formControlName="price" />
+  <label for="">Categoria</label>
+  <!-- <input type="text" formControlName="categoryId" /> -->
+  <select name="" id="" formControlName="categoryId">
+    <option *ngFor="let cat of categories" [value]="cat.productCategoryId">
+      {{ cat.description }}
+    </option>
+  </select>
+  <button type="submit" [disabled]="productForm.invalid">Guardar</button>
+</form>

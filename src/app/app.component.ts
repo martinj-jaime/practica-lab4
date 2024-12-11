@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'final-labo4';
+
+  auth!: AuthService
+
+  constructor(
+    private authService: AuthService
+    
+  ) { 
+    this.auth = authService
+  }
+
+  onLogOut() {
+    this.authService.logoutUser()
+  }
 }
